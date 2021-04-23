@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" data-name="vs/editor/editor.main"
+          href="node_modules/monaco-editor/min/vs/editor/editor.main.css">
+    <title>Monaco Editor Log Language</title>
+</head>
+<body>
+
+<h2>Monaco Editor Log Language</h2>
+<div id="container" style="width:800px;height:600px;border:1px solid grey"></div>
+
+<script>
+    const require = {
+        paths: {'vs': 'node_modules/monaco-editor/min/vs'},
+        'vs/nls': {
+            availableLanguages: {
+                '*': 'zh-cn'
+            }
+        }
+    };
+</script>
+<script src="node_modules/monaco-editor/min/vs/loader.js"></script>
+<script src="node_modules/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
+<script src="node_modules/monaco-editor/min/vs/editor/editor.main.js"></script>
+<script src="node_modules/monaco-editor/min/vs/editor/editor.main.nls.zh-cn.js"></script>
+<script src="language-log.js"></script>
+<script>
+    const editor = monaco.editor.create(document.getElementById('container'), {
+        theme: 'logview',
+        value: '2019-12-23 19:06:24 平台日志：包路径定位成功：hello_world\n' +
+            '2019-12-23 19:06:24 平台日志：脚本包内路径定位成功：start.sh\n' +
+            '2019-12-23 19:06:24 平台日志：脚本版本验证通过\n' +
+            '\n' +
+            '2019-12-23 19:06:24 平台日志：任务开启资源限制(CPU,内存)：CPU最大可用 2 核,内存最大可用 2048 MB\n' +
+            '2019-12-23 19:06:24 平台日志：任务开始执行\n' +
+            '2019-12-23 19:06:26 ' +
+            '接收到检测请求，规则Id：1930\n' +
+            '2019-12-23 19:06:26 规则信息：\n' +
+            '校验方式：调用执行\n' +
+            '分区：dt=\'2019-12-21\'\n' +
+            '规则名称：规则1\n' +
+            '规则描述：当abc最小值100时出现橙色告警\n' +
+            '告警级别：橙色告警\n' +
+            '2019-12-23 19:06:26 规则检查对应的SQL语句为：SELECT MIN(a1) FROM a.b WHERE dt=\'2019-12-21\' AND a1 IS NOT NULL;\n' +
+            '2019-12-23 19:06:26 开始校验规则数据质量...\n' +
+            '2019-12-23 19:06:26 hive sql params:\n' +
+            '2019-12-23 19:06:28 WARNING: org.apache.hadoop.metrics.jvm.EventCounter is deprecated. Please use org.apache.hadoop.log.metrics.EventCounter in all the log4j.properties files.\n' +
+            '2019-12-23 19:06:29 Hive Session ID = aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa\n' +
+            '2019-12-23 19:06:29 Hive 2.0.0-SNAPSHOT\n' +
+            '2019-12-23 19:06:33 Start Hive Client use : 6223 ms\n' +
+            '2019-12-23 19:06:35 Query ID = aaaa_aaaa-1234566-1231245-123156\n' +
+            '2019-12-23 19:06:35 Total jobs = 1\n' +
+            '2019-12-23 19:06:35 Launching Job 1 out of 1\n' +
+            '2019-12-23 19:06:35 Number of reduce tasks determined at compile time: 1\n' +
+            '2019-12-23 19:06:35 In order to change the average load for a reducer (in bytes):\n' +
+            '2019-12-23 19:06:35   set hive.exec.reducers.bytes.per.reducer=<number>\n' +
+            '2019-12-23 19:06:35 In order to limit the maximum number of reducers:\n' +
+            '2019-12-23 19:06:35   set hive.exec.reducers.max=<number>\n' +
+            '2019-12-23 19:06:35 In order to set a constant number of reducers:\n' +
+            '2019-12-23 19:06:35   set mapreduce.job.reduces=<number>\n' +
+            '2019-12-23 19:06:36 Start submit job !\n' +
+            '2019-12-23 19:06:37 Start GetSplits\n' +
+            '2019-12-23 19:06:37 GetSplits finish, it costs : 62 milliseconds\n' +
+            '2019-12-23 19:06:39 Submit job success : job_1111111111111_1111111\n' +
+            '2019-12-23 19:06:39 Starting Job = job_1111111111111_1111111, Tracking URL = http://hadoop.xxx.xxx.com/abc/def/\n' +
+            '2019-12-23 19:06:39 Kill Command = /data0/hadoop/bin/hadoop job  -kill job_1111111111111_1111111\n',
+        language: 'log'
+    });
+</script>
+
+</body>
+</html>
